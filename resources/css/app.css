@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hammersmith+One&family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --font-sans: "Montserrat", sans-serif;
+    --font-serif: "Hammersmith One", sans-serif;
+    --font-wedding: "Great Vibes", cursive;
+
+    --color-brand-cream: #faf8f5;
+    --color-brand-pink: #d473a9;
+    --color-brand-pink-light: #fde5ec;
+    --color-brand-purple: #8f74be;
+    --color-brand-purple-light: #e3dffd;
+    --color-brand-lavender: #b0a8b9;
+}
+
+.font-wedding {
+    font-family: "Great Vibes", cursive;
+}
+
+/* Custom Glassmorphism Utility */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 16px 36px -10px rgba(143, 116, 190, 0.15);
+}
+
+.glass-panel-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 25px 50px -12px rgba(143, 116, 190, 0.25);
+}
+
+.glass-panel-accent {
+    background: rgba(245, 240, 255, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(143, 116, 190, 0.3);
+    box-shadow: 0 16px 36px -10px rgba(143, 116, 190, 0.25);
+}
+
+/* Glow Backgrounds */
+.glow-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+    animation: float-slow 15s infinite alternate ease-in-out;
+}
+
+@keyframes float-slow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(40px, 30px) scale(1.15);
+    }
+}
+
+.glow-sphere-reverse {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+    animation: float-slow-reverse 18s infinite alternate ease-in-out;
+}
+
+@keyframes float-slow-reverse {
+    0% {
+        transform: translate(0, 0) scale(1.1);
+    }
+    100% {
+        transform: translate(-30px, -45px) scale(0.9);
+    }
+}
+
+/* Custom Floral SVG Animations */
+.floral-float {
+    animation: floral-sway 6s infinite ease-in-out alternate;
+}
+
+@keyframes floral-sway {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+    100% {
+        transform: rotate(5deg) translateY(-8px);
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #faf8f5;
+    border-left: 1px solid rgba(143, 116, 190, 0.1);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d473a9, #8f74be);
+    border-radius: 99px;
+    border: 2px solid #faf8f5;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #c15c93, #7e62ac);
+}
+
+/* Prevent horizontal overflow on mobile layout while keeping sticky headers */
+html,
+body {
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+/* Lightweight Entry & Floating Animations */
+.fade-in-up {
+    opacity: 0;
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-left {
+    opacity: 0;
+    animation: fade-left 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in-right {
+    opacity: 0;
+    animation: fade-right 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.image-float {
+    animation: image-bounce 6s infinite ease-in-out alternate;
+}
+
+@keyframes image-bounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        transform: translateY(-8px) scale(1.01);
+    }
+}
+
+/* --- Scroll Reveal Base System --- */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-element.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Delay classes */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Responsive Scroll Reveal: Override horizontal slides on mobile to prevent overflow */
+@media (max-width: 767px) {
+  .fade-in-left, .fade-in-right {
+    opacity: 0;
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* --- Non-monotonous Dynamic Cards (Layanan & Tentang Kami) --- */
+@media (min-width: 768px) {
+  .card-dynamic-left {
+    transform: rotate(-1.5deg) translateY(4px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s, 
+                border-color 0.5s;
+  }
+  .card-dynamic-left:hover {
+    transform: rotate(0deg) translateY(-12px) scale(1.03);
+    box-shadow: 0 30px 60px -15px rgba(143, 116, 190, 0.3);
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .card-dynamic-center {
+    transform: rotate(0deg) translateY(-4px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s, 
+                border-color 0.5s;
+  }
+  .card-dynamic-center:hover {
+    transform: rotate(0deg) translateY(-16px) scale(1.03);
+    box-shadow: 0 30px 60px -15px rgba(143, 116, 190, 0.3);
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .card-dynamic-right {
+    transform: rotate(1.5deg) translateY(4px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s, 
+                border-color 0.5s;
+  }
+  .card-dynamic-right:hover {
+    transform: rotate(0deg) translateY(-12px) scale(1.03);
+    box-shadow: 0 30px 60px -15px rgba(143, 116, 190, 0.3);
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Straight Dynamic Card for Pricing (Lurus, Hanya Angkat) */
+  .card-dynamic-straight {
+    transform: rotate(0deg) translateY(0);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s, 
+                border-color 0.5s;
+  }
+  .card-dynamic-straight:hover {
+    transform: rotate(0deg) translateY(-12px) scale(1.02);
+    box-shadow: 0 30px 60px -15px rgba(143, 116, 190, 0.3);
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+/* Fallback for Mobile (Mobile-first straight cards with hover lift) */
+@media (max-width: 767px) {
+  .card-dynamic-left, .card-dynamic-center, .card-dynamic-right, .card-dynamic-straight {
+    transform: translateY(0) rotate(0deg);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-dynamic-left:hover, .card-dynamic-center:hover, .card-dynamic-right:hover, .card-dynamic-straight:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(143, 116, 190, 0.2);
+  }
+}
+
+/* --- Tentang Kami Gallery Scattered Collage --- */
+.gallery-tilt-1, .gallery-tilt-2, .gallery-tilt-3 {
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              z-index 0.5s;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .gallery-tilt-1 {
+    transform: rotate(-3.5deg) scale(0.97);
+  }
+  .gallery-tilt-2 {
+    transform: rotate(4.5deg) scale(0.97);
+  }
+  .gallery-tilt-3 {
+    transform: rotate(-2.5deg) scale(0.97);
+  }
+
+  .gallery-tilt-1:hover, .gallery-tilt-2:hover, .gallery-tilt-3:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+    box-shadow: 0 25px 50px -12px rgba(143, 116, 190, 0.3);
+  }
+}
+
+/* Diamond Card styling for Monogram Box (NO hover effect, tilted like others) */
+.diamond-card {
+  /* Completely static card shape with no hover transitions or styles */
+}
+@media (min-width: 768px) {
+  .diamond-card {
+    transform: rotate(-1.5deg) translateY(4px);
+  }
+  .diamond-card:hover {
+    transform: rotate(-1.5deg) translateY(4px) !important;
+  }
+}
+@media (max-width: 767px) {
+  .diamond-card {
+    transform: rotate(0deg) translateY(0);
+  }
+  .diamond-card:hover {
+    transform: rotate(0deg) translateY(0) !important;
+  }
+}
