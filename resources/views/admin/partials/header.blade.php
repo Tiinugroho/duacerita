@@ -166,15 +166,15 @@
                     <span>Settings</span>
                 </a>
                 <hr class="border-slate-50 my-1">
-                <a href="#"
-                    class="flex items-center gap-2 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 font-semibold transition-all">
+                <button @click="showLogoutModal = true; profileDropdown = false"
+                    class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 font-semibold transition-all text-left cursor-pointer border-none bg-transparent">
                     <svg class="w-3.5 h-3.5 text-rose-500" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 11-6 0v-1m6-3a2 2 0 11-4 0h4v3"></path>
                     </svg>
                     <span>Sign Out</span>
-                </a>
+                </button>
             </div>
         </div>
     </div>

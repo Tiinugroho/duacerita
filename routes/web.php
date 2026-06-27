@@ -2,28 +2,32 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Auth\AuthController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-});
+})->middleware(['auth', 'otp.verified']);
+
+Route::get('/customer/dashboard', function () {
+    return view('customer.dashboard');
+})->middleware(['auth', 'otp.verified']);
 
 // Authentication Routes
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/login', function () {
-    return back()->withInput()->withErrors(['email' => 'Fungsi autentikasi backend belum diaktifkan. Silakan hubungkan controller Anda.']);
-});
-
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
-Route::post('/register', function () {
-    return back()->withInput()->withErrors(['email' => 'Fungsi registrasi backend belum diaktifkan. Silakan hubungkan controller Anda.']);
+// OTP Verification Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/verify-otp', [AuthController::class, 'showOtpForm'])->name('otp.verify');
+    Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
+    Route::post('/verify-otp/resend', [AuthController::class, 'resendOtp'])->name('otp.resend');
 });
 
 Route::get('/forgot-password', function () {
@@ -31,10 +35,5 @@ Route::get('/forgot-password', function () {
 })->name('password.request');
 
 // Google OAuth endpoints
-Route::get('/auth/google', function () {
-    return 'Mengarahkan ke Google Sign-In... (Gunakan Laravel Socialite untuk menghubungkan Google API)';
-})->name('google.login');
-
-Route::get('/auth/google/callback', function () {
-    return 'Callback Google Sign-In... (Gunakan Laravel Socialite untuk memproses data dari Google)';
-});
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

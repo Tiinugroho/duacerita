@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-    x-data="{ sidebarOpen: true, mobileSidebarOpen: false, profileDropdown: false, notificationDropdown: false, activeModal: null, selectedApplicant: {} }">
+    x-data="{ sidebarOpen: true, mobileSidebarOpen: false, profileDropdown: false, notificationDropdown: false, activeModal: null, selectedApplicant: {}, showLogoutModal: false }">
 
 <head>
     <meta charset="UTF-8">
@@ -71,6 +71,52 @@
 
     <!-- Modals Partial -->
     @include('admin.partials.modals')
+
+    <!-- Logout Confirmation Modal -->
+    <div x-show="showLogoutModal" 
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         x-cloak>
+        <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 max-w-sm w-full transform transition-all"
+             @click.away="showLogoutModal = false"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="scale-95 translate-y-4"
+             x-transition:enter-end="scale-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="scale-100 translate-y-0"
+             x-transition:leave-end="scale-95 translate-y-4">
+            <div class="text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-rose-50 text-rose-600 mb-4">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 11-6 0v-1m6-3a2 2 0 11-4 0h4v3"></path>
+                    </svg>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900 font-heading">Konfirmasi Keluar</h3>
+                <p class="text-xs text-slate-500 mt-2">
+                    Apakah Anda yakin ingin keluar dari sistem DuaCerita? Sesi aktif Anda akan diakhiri.
+                </p>
+            </div>
+            <div class="mt-6 flex items-center gap-3">
+                <button @click="showLogoutModal = false" 
+                        class="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-600 py-2 rounded-xl text-xs font-semibold border border-slate-200 transition-all cursor-pointer">
+                    Batal
+                </button>
+                <form action="{{ route('logout') }}" method="POST" class="flex-1">
+                    @csrf
+                    <button type="submit" 
+                            class="w-full bg-rose-600 hover:bg-rose-700 text-white py-2 rounded-xl text-xs font-semibold shadow-sm shadow-rose-200 transition-all cursor-pointer">
+                        Ya, Keluar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('adm/assets/js/jquery.min.js') }}"></script>
