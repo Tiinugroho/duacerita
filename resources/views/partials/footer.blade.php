@@ -29,7 +29,7 @@
 
         <!-- Copyright -->
         <span class="text-[10px] text-gray-500">
-            &copy; {{ config('app.name', 'Laravel') }} {{date('Y')}} Semua Hak Dilindungi.
+            &copy; {{ config('app.name', 'Laravel') }} {{date('Y')}} | Semua Hak Dilindungi.
         </span>
     </div>
 </footer>
