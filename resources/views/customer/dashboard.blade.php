@@ -135,7 +135,7 @@
 
             <div class="flex items-center gap-2">
                 <button id="exportExcelBtn"
-                    class="bg-white hover:bg-slate-50 text-[#2C5EAD] px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
+                    class="bg-white hover:bg-slate-50 text-brand-pink px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
                     <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor"
                         stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -145,7 +145,7 @@
                     <span>Excel</span>
                 </button>
                 <button id="exportPdfBtn"
-                    class="bg-white hover:bg-slate-50 text-[#2C5EAD] px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
+                    class="bg-white hover:bg-slate-50 text-brand-pink px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
                     <svg class="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor"
                         stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -175,11 +175,11 @@
                 </thead>
                 <tbody class="text-slate-600 divide-y divide-slate-50">
                     <!-- Row 1 -->
-                    <tr class="hover:bg-[#C4E2F5]/10 transition-colors duration-150">
+                    <tr class="hover:bg-brand-pink-light/10 transition-colors duration-150">
                         <td class="py-3.5 px-4 font-medium text-slate-900">DC-INV-001</td>
                         <td class="py-3.5 px-4 font-semibold text-slate-900">Pernikahan Alex & Emily</td>
                         <td class="py-3.5 px-4 text-slate-500">Gold (Premium)</td>
-                        <td class="py-3.5 px-4 text-blue-600 font-medium">duacerita.com/alex-emily</td>
+                        <td class="py-3.5 px-4 text-brand-pink font-medium">duacerita.com/alex-emily</td>
                         <td class="py-3.5 px-4">
                             <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full text-[10px] font-semibold">
                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>Aktif
@@ -191,7 +191,7 @@
                             <div class="flex items-center justify-center gap-1">
                                 <button
                                     @click="activeModal = 'view'; selectedApplicant = {id: 'DC-INV-001', name: 'Pernikahan Alex & Emily', faculty: 'Gold (Premium)', path: 'duacerita.com/alex-emily', date: '2026-08-15'}"
-                                    class="h-7 w-7 text-[#2C5EAD] hover:bg-blue-50 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                                    class="h-7 w-7 text-brand-pink hover:bg-pink-50 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -229,11 +229,11 @@
                         </td>
                     </tr>
                     <!-- Row 2 -->
-                    <tr class="hover:bg-[#C4E2F5]/10 transition-colors duration-150">
+                    <tr class="hover:bg-brand-pink-light/10 transition-colors duration-150">
                         <td class="py-3.5 px-4 font-medium text-slate-900">DC-INV-002</td>
                         <td class="py-3.5 px-4 font-semibold text-slate-900">Pertunangan David & Sarah</td>
                         <td class="py-3.5 px-4 text-slate-500">Silver</td>
-                        <td class="py-3.5 px-4 text-blue-600 font-medium">duacerita.com/david-sarah</td>
+                        <td class="py-3.5 px-4 text-brand-pink font-medium">duacerita.com/david-sarah</td>
                         <td class="py-3.5 px-4">
                             <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-full text-[10px] font-semibold">
                                 <span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span>Draft
@@ -245,7 +245,7 @@
                             <div class="flex items-center justify-center gap-1">
                                 <button
                                     @click="activeModal = 'view'; selectedApplicant = {id: 'DC-INV-002', name: 'Pertunangan David & Sarah', faculty: 'Silver', path: 'duacerita.com/david-sarah', date: '2026-10-12'}"
-                                    class="h-7 w-7 text-[#2C5EAD] hover:bg-blue-50 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                                    class="h-7 w-7 text-brand-pink hover:bg-pink-50 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round"

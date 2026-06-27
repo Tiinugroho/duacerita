@@ -7,19 +7,20 @@
             <div class="h-20 flex items-center px-6 border-b border-slate-50">
                 <div class="flex items-center gap-3 overflow-hidden">
                     <div
-                        class="h-10 w-10 min-w-[40px] rounded-xl bg-[#2C5EAD] flex items-center justify-center text-white shadow-sm shadow-blue-200/50 overflow-hidden p-1.5 bg-white border border-slate-100">
-                        <img src="{{ asset('adm/assets/img/OIP.jpeg') }}" alt="ABYNNTECH Logo" class="w-full h-full object-contain">
+                        class="h-10 w-10 min-w-[40px] rounded-xl bg-gradient-to-tr from-brand-pink to-brand-purple flex items-center justify-center text-white shadow-sm shadow-pink-200/50 overflow-hidden p-1.5 border border-slate-100">
+                        <img src="{{ asset('images/logo-1.png') }}" alt="DuaCerita Logo"
+                            class="w-full h-full object-contain">
                     </div>
                     <span class="font-heading font-bold text-base tracking-tight text-slate-900 whitespace-nowrap"
                         x-show="sidebarOpen">
-                        ABYNNTECH <span class="text-[#1591DC]">OS</span>
+                        {{ config('app.name') }}
                     </span>
                 </div>
             </div>
 
             <nav class="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-220px)]">
                 <a href="#"
-                    class="flex items-center gap-4 px-4 py-3 rounded-xl bg-[#C4E2F5]/50 text-[#2C5EAD] font-semibold transition-all">
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl bg-[#8f74be] text-white border border-[#d473a9] font-semibold transition-all shadow-md shadow-[#d473a9]/20">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V16zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V16z">
@@ -29,7 +30,7 @@
                 </a>
 
                 <a href="#"
-                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50/80 hover:text-slate-900 transition-all">
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 border border-transparent hover:border-[#d473a9] hover:bg-[#e3dffd]/30 hover:text-[#8f74be] transition-all">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
@@ -40,7 +41,7 @@
 
                 <div x-data="{ open: true }">
                     <button @click="open = !open"
-                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50/80 hover:text-slate-900 transition-all">
+                        class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-slate-500 border border-transparent hover:border-[#d473a9] hover:bg-[#e3dffd]/30 hover:text-[#8f74be] transition-all">
                         <div class="flex items-center gap-4">
                             <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -52,19 +53,20 @@
                         </div>
                         <svg class="w-3 h-3 transition-transform text-slate-400" :class="open ? 'rotate-180' : ''"
                             x-show="sidebarOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
                         </svg>
                     </button>
                     <div x-show="open && sidebarOpen" x-transition class="pl-12 pr-4 py-1 space-y-1">
-                        <a href="#" class="block py-1.5 text-sm text-[#1591DC] font-medium">History</a>
-                        <a href="#" class="block py-1.5 text-sm text-slate-400 hover:text-slate-900">Integration</a>
-                        <a href="#" class="block py-1.5 text-sm text-slate-400 hover:text-slate-900">Reports</a>
+                        <a href="#"
+                            class="block py-1.5 text-sm text-[#8f74be] font-medium border-l-2 border-[#d473a9] pl-3">History</a>
+                        <a href="#" class="block py-1.5 text-sm text-slate-400 hover:text-[#8f74be]">Integration</a>
+                        <a href="#" class="block py-1.5 text-sm text-slate-400 hover:text-[#8f74be]">Reports</a>
                     </div>
                 </div>
 
                 <a href="#"
-                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50/80 hover:text-slate-900 transition-all">
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 border border-transparent hover:border-[#d473a9] hover:bg-[#e3dffd]/30 hover:text-[#8f74be] transition-all">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
@@ -73,7 +75,7 @@
                 </a>
 
                 <a href="#"
-                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50/80 hover:text-slate-900 transition-all">
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 border border-transparent hover:border-[#d473a9] hover:bg-[#e3dffd]/30 hover:text-[#8f74be] transition-all">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -83,7 +85,7 @@
                 </a>
 
                 <a href="#"
-                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50/80 hover:text-slate-900 transition-all">
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 border border-transparent hover:border-[#d473a9] hover:bg-[#e3dffd]/30 hover:text-[#8f74be] transition-all">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M11 3.055A9.003 9.003 0 1020.945 13H11V3.055z"></path>
@@ -94,7 +96,7 @@
                 </a>
 
                 <a href="#"
-                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50/80 hover:text-slate-900 transition-all">
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-500 border border-transparent hover:border-[#d473a9] hover:bg-[#e3dffd]/30 hover:text-[#8f74be] transition-all">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 14l9-5-9-5-9 5 9 5z"></path>
@@ -113,15 +115,14 @@
                 :class="sidebarOpen ? 'gap-3 px-2 py-1' : 'justify-center'">
                 <div class="relative shrink-0">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
-                        alt="User Profile" class="h-10 w-10 rounded-xl object-cover ring-2 ring-[#C4E2F5]">
+                        alt="User Profile" class="h-10 w-10 rounded-xl object-cover ring-2 ring-brand-pink-light">
                     <span
                         class="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-white animate-pulse"></span>
                 </div>
 
-                <div class="min-w-0 flex-1" x-show="sidebarOpen"
-                    x-transition:enter="transition ease-out duration-200"
+                <div class="min-w-0 flex-1" x-show="sidebarOpen" x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0 transform -translate-x-2">
-                    <p class="text-xs font-semibold text-slate-900 truncate leading-none">Jati Nugroho</p>
+                    <p class="text-xs font-semibold text-slate-900 truncate leading-none">{{ Auth::user()->name }}</p>
                     <p class="text-[10px] text-emerald-600 font-medium mt-1 flex items-center gap-1">
                         <span class="h-1 w-1 rounded-full bg-emerald-500"></span> Active Session
                     </p>
@@ -151,11 +152,11 @@
         <div class="h-20 flex items-center px-6 border-b border-slate-50 justify-between">
             <div class="flex items-center gap-3">
                 <div
-                    class="h-10 w-10 min-w-[40px] rounded-xl bg-[#2C5EAD] flex items-center justify-center text-white shadow-sm shadow-blue-200/50 overflow-hidden p-1.5 bg-white border border-slate-100">
-                    <img src="{{ asset('adm/assets/img/OIP.jpeg') }}" alt="ABYNNTECH Logo" class="w-full h-full object-contain">
+                    class="h-10 w-10 min-w-[40px] rounded-xl bg-gradient-to-tr from-brand-pink to-brand-purple flex items-center justify-center text-white shadow-sm shadow-pink-200/50 overflow-hidden p-1.5 border border-slate-100">
+                    <img src="{{ asset('images/OIP.jpeg') }}" alt="DuaCerita Logo" class="w-full h-full object-contain">
                 </div>
-                <span class="font-heading font-bold text-base tracking-tight text-slate-900">ABYNNTECH <span
-                        class="text-[#1591DC]">OS</span></span>
+                <span class="font-heading font-bold text-base tracking-tight text-slate-900">DuaCerita <span
+                        class="text-brand-pink">Portal</span></span>
             </div>
             <button @click="mobileSidebarOpen = false" class="text-slate-400 hover:text-slate-900 cursor-pointer">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +167,7 @@
         </div>
         <nav class="p-4 space-y-1">
             <a href="#"
-                class="flex items-center gap-4 px-4 py-2.5 rounded-xl bg-[#C4E2F5]/50 text-[#2C5EAD] font-semibold">
+                class="flex items-center gap-4 px-4 py-2.5 rounded-xl bg-brand-pink-light/60 text-brand-pink font-semibold">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V16zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V16z">

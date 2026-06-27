@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f8fa;
+    background-color: #faf8f5;
     letter-spacing: -0.01em;
 }
 h1,
@@ -109,8 +109,8 @@ th,
     transition: all 0.2s ease;
 }
 .dataTables_wrapper .dataTables_filter input:focus {
-    border-color: #1591DC !important;
-    box-shadow: 0 0 0 3px rgba(21, 145, 220, 0.1);
+    border-color: #d473a9 !important;
+    box-shadow: 0 0 0 3px rgba(212, 115, 169, 0.1);
 }
 table.dataTable {
     border-collapse: collapse !important;
@@ -134,7 +134,7 @@ table.dataTable tbody tr {
     transition: background-color 0.15s ease;
 }
 table.dataTable tbody tr:hover {
-    background-color: rgba(196, 226, 245, 0.15) !important;
+    background-color: rgba(212, 115, 169, 0.08) !important;
 }
 table.dataTable tbody td {
     padding: 12px 16px !important;
@@ -165,16 +165,16 @@ table.dataTable tbody td {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    background: #2C5EAD !important;
+    background: #8f74be !important;
     color: white !important;
-    border: 1px solid #2C5EAD !important;
+    border: 1px solid #8f74be !important;
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(44, 94, 173, 0.12);
+    box-shadow: 0 4px 12px rgba(143, 116, 190, 0.12);
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background: #C4E2F5 !important;
-    color: #2C5EAD !important;
-    border: 1px solid #b4d3e6 !important;
+    background: #fde5ec !important;
+    color: #d473a9 !important;
+    border: 1px solid #f8c9d9 !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {

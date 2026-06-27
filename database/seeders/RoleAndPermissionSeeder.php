@@ -18,12 +18,12 @@ class RoleAndPermissionSeeder extends Seeder
     {
         // Disable foreign key checks to allow truncating
         Schema::disableForeignKeyConstraints();
-        
+
         // Truncate tables to prevent duplicates
         User::truncate();
         Role::truncate();
         Permission::truncate();
-        
+
         Schema::enableForeignKeyConstraints();
 
         // 1. Create Permissions
@@ -85,7 +85,7 @@ class RoleAndPermissionSeeder extends Seeder
         $superAdminUser = User::create([
             'name' => 'Super Admin DuaCerita',
             'email' => 'superadmin@duacerita.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('jati181103'),
         ]);
         $superAdminUser->assignRole('superadmin');
 
@@ -93,7 +93,7 @@ class RoleAndPermissionSeeder extends Seeder
         $adminUser = User::create([
             'name' => 'Admin DuaCerita',
             'email' => 'admin@duacerita.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('jati181103'),
         ]);
         $adminUser->assignRole('admin');
 
@@ -101,7 +101,7 @@ class RoleAndPermissionSeeder extends Seeder
         $clientUser = User::create([
             'name' => 'Client Customer',
             'email' => 'client@duacerita.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('jati181103'),
         ]);
         $clientUser->assignRole('client');
     }

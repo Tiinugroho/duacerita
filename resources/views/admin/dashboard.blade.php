@@ -138,7 +138,7 @@
 
             <div class="flex items-center gap-2">
                 <button id="exportExcelBtn"
-                    class="bg-white hover:bg-slate-50 text-[#2C5EAD] px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
+                    class="bg-white hover:bg-slate-50 text-brand-pink px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
                     <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor"
                         stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -148,7 +148,7 @@
                     <span>Excel</span>
                 </button>
                 <button id="exportPdfBtn"
-                    class="bg-white hover:bg-slate-50 text-[#2C5EAD] px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
+                    class="bg-white hover:bg-slate-50 text-brand-pink px-3.5 py-1.5 rounded-xl text-[11px] font-semibold border border-slate-200 transition-all shadow-sm flex items-center gap-2 cursor-pointer h-9">
                     <svg class="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor"
                         stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -177,7 +177,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-slate-600 divide-y divide-slate-50">
-                    <tr class="hover:bg-[#C4E2F5]/10 transition-colors duration-150">
+                    <tr class="hover:bg-brand-pink-light/10 transition-colors duration-150">
                         <td class="py-3.5 px-4 font-medium text-slate-900">REG-2026-001</td>
                         <td class="py-3.5 px-4 font-semibold text-slate-900">Alexander Wright</td>
                         <td class="py-3.5 px-4 text-slate-500">Computer Science</td>
@@ -199,7 +199,7 @@
                             <div class="flex items-center justify-center gap-1">
                                 <button
                                     @click="activeModal = 'view'; selectedApplicant = {id: 'REG-2026-001', name: 'Alexander Wright', faculty: 'Computer Science', path: 'Regular', date: '2026-06-10'}"
-                                    class="h-7 w-7 text-[#2C5EAD] hover:bg-blue-50 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                                    class="h-7 w-7 text-brand-pink hover:bg-pink-50 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round"

@@ -30,9 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/verify-otp/resend', [AuthController::class, 'resendOtp'])->name('otp.resend');
 });
 
-Route::get('/forgot-password', function () {
-    return 'Halaman Lupa Kata Sandi... (Silakan hubungkan dengan controller password reset)';
-})->name('password.request');
+// Password Reset Routes
+Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
+Route::post('/forgot-password', [AuthController::class, 'sendResetOtp'])->name('password.email');
+Route::get('/reset-password', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 // Google OAuth endpoints
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');

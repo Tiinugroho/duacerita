@@ -70,10 +70,17 @@ class AuthController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
 
-            // Set session OTP verified status to false for all logins (2-Factor OTP)
+            // Admins and Superadmins bypass OTP
+            if ($user->hasRole(['superadmin', 'admin'])) {
+                session(['otp_verified' => true]);
+                session()->flash('success', 'Selamat datang kembali, ' . $user->name . '!');
+                return $this->redirectUserAfterLogin($user);
+            }
+
+            // Set session OTP verified status to false for client logins (2-Factor OTP)
             session(['otp_verified' => false]);
 
-            // Always generate and send OTP on login
+            // Generate and send OTP on login for client
             $this->generateAndSendOtp($user);
 
             return redirect()->route('otp.verify');
@@ -161,6 +168,7 @@ class AuthController extends Controller
             $user->otp_expires_at = null;
             $user->save();
 
+            session()->flash('success', 'Selamat datang kembali, ' . $user->name . '!');
             return $this->redirectUserAfterLogin($user);
         }
 
@@ -231,6 +239,105 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Anda telah berhasil keluar.');
+    }
+
+    /**
+     * Show the forgot password email request form.
+     */
+    public function showForgotPasswordForm(): View
+    {
+        return view('auth.forgot-password');
+    }
+
+    /**
+     * Generate an OTP and send it via email to reset user password.
+     */
+    public function sendResetOtp(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'email' => ['required', 'string', 'email'],
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages([
+                'email' => 'Alamat email tidak terdaftar dalam sistem kami.',
+            ]);
+        }
+
+        // Generate OTP code
+        $otp = sprintf('%06d', mt_rand(100000, 999999));
+        $user->otp_code = $otp;
+        $user->otp_expires_at = now()->addMinutes(10);
+        $user->save();
+
+        // Dispatch reset password email
+        try {
+            Mail::to($user->email)->send(new \App\Mail\SendResetPasswordMail($otp, $user->name));
+        } catch (\Exception $e) {
+            logger()->error('Gagal mengirim email reset password: ' . $e->getMessage());
+        }
+
+        // Store email address in session
+        session(['reset_email' => $user->email]);
+
+        return redirect()->route('password.reset')->with('status', 'Kode OTP reset kata sandi telah dikirimkan ke email Anda.');
+    }
+
+    /**
+     * Show the password reset verification form.
+     */
+    public function showResetPasswordForm(): View
+    {
+        if (!session()->has('reset_email')) {
+            return redirect()->route('password.request');
+        }
+
+        return view('auth.reset-password');
+    }
+
+    /**
+     * Verify the reset OTP and change the user's password.
+     */
+    public function resetPassword(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'otp_code' => ['required', 'string', 'size:6'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return redirect()->route('password.request');
+        }
+
+        // Check matching OTP and expiry
+        if ($user->otp_code === $request->otp_code && $user->otp_expires_at && $user->otp_expires_at->isFuture()) {
+            // Update password
+            $user->password = Hash::make($request->password);
+            
+            // Mark email as verified since they proved access
+            if (is_null($user->email_verified_at)) {
+                $user->email_verified_at = now();
+            }
+
+            // Clear OTP fields
+            $user->otp_code = null;
+            $user->otp_expires_at = null;
+            $user->save();
+
+            // Clear email reset session
+            session()->forget('reset_email');
+
+            return redirect()->route('login')->with('status', 'Kata sandi Anda berhasil disetel ulang! Silakan masuk dengan kata sandi baru Anda.');
+        }
+
+        throw ValidationException::withMessages([
+            'otp_code' => 'Kode OTP tidak cocok atau sudah kedaluwarsa.',
+        ]);
     }
 }

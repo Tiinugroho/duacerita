@@ -58,7 +58,14 @@ class GoogleController extends Controller
 
             Auth::login($user);
 
-            // Set session OTP verified status to false (2-Factor OTP)
+            // Admins and Superadmins bypass OTP
+            if ($user->hasRole(['superadmin', 'admin'])) {
+                session(['otp_verified' => true]);
+                session()->flash('success', 'Selamat datang kembali, ' . $user->name . '!');
+                return redirect()->intended('/admin/dashboard');
+            }
+
+            // Set session OTP verified status to false (2-Factor OTP) for client
             session(['otp_verified' => false]);
 
             // Generate and send OTP for Google Logins

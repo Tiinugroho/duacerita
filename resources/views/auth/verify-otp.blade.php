@@ -165,6 +165,9 @@
         </div>
     </div>
 
+    <!-- Toast Notifications -->
+    @include('partials.toast')
+
 </body>
 
 </html>

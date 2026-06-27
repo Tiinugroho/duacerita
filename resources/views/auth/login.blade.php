@@ -9,6 +9,8 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body
@@ -41,11 +43,13 @@
                 <p class="text-xs text-gray-500 font-medium">Masuk untuk mengelola pernikahan Anda</p>
             </div>
 
-            <!-- Title Header -->
-            <div class="mb-8 hidden md:block">
-                <h1 class="text-2xl font-serif font-bold text-gray-800 mb-1.5">Selamat Datang Kembali</h1>
-                <p class="text-xs text-gray-400">Silakan masukkan detail akun Anda untuk melanjutkan</p>
-            </div>
+            <!-- Session Status Alert -->
+            @if (session('status'))
+                <div class="mb-5 p-3.5 bg-green-50 border border-green-100 text-green-600 rounded-2xl text-[11px] font-semibold flex items-center gap-2.5">
+                    <i class="fa-solid fa-circle-check text-xs"></i>
+                    <span>{{ session('status') }}</span>
+                </div>
+            @endif
 
             <!-- Form -->
             <form action="{{ route('login') }}" method="POST" class="space-y-4">
@@ -196,6 +200,9 @@
             }
         }
     </script>
+
+    <!-- Toast Notifications -->
+    @include('partials.toast')
 
 </body>
 

@@ -1,6 +1,5 @@
 <!-- 7. Footer -->
-<footer
-    class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-20 border-t border-gray-200/50 mt-auto">
+<footer class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-20 border-t border-gray-200/50 mt-auto">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
 
         <!-- Quick Menu -->
@@ -30,7 +29,7 @@
 
         <!-- Copyright -->
         <span class="text-[10px] text-gray-500">
-            &copy; 2024 Agensi Pernikahan Digital. Semua Hak Dilindungi.
+            &copy; {{date('Y')}} {{ config('app.name', 'Laravel') }}. Semua Hak Dilindungi.
         </span>
     </div>
 </footer>

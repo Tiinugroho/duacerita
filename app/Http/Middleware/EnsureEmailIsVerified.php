@@ -21,10 +21,12 @@ class EnsureEmailIsVerified
             return redirect()->route('login');
         }
 
-        if (!session('otp_verified')) {
-            // Avoid infinite redirection loops by allowing OTP verification and logout requests
-            if (!$request->is('verify-otp*') && !$request->is('logout')) {
-                return redirect()->route('otp.verify');
+        if (!$request->user()->hasRole(['superadmin', 'admin'])) {
+            if (!session('otp_verified')) {
+                // Avoid infinite redirection loops by allowing OTP verification and logout requests
+                if (!$request->is('verify-otp*') && !$request->is('logout')) {
+                    return redirect()->route('otp.verify');
+                }
             }
         }
 
